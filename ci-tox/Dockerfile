@@ -43,6 +43,7 @@ RUN apt-get install -y git
 
 # Python with latest 'pip' and 'tox'
 RUN apt-get install -y python-dev python-pip python3-dev python3-pip
+RUN apt-get install -y python3.3
 RUN python -m pip install -U pip
 RUN python3 -m pip install -U pip
 RUN python -m pip install tox
