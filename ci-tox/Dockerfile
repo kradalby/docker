@@ -3,7 +3,7 @@ MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 
 # Add repo for multiple python versions
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys DB82666C
-RUN gpg --export-key DB82666C | apt-key add -
+RUN gpg --export DB82666C | apt-key add -
 
 COPY deadsnakes.list /etc/apt/sources.list.d/
 
@@ -51,4 +51,4 @@ RUN python -m pip install ansible
 RUN python -m pip install virtualenv
 
 # Clean everything
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* && npm cache clear
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
