@@ -1,6 +1,13 @@
 FROM debian:latest
 MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 
+# Add repo for multiple python versions
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys DB82666C
+RUN gpg --export-key DB82666C | apt-key add -
+
+COPY deadsnakes.list /etc/apt/sources.list.d/
+
+
 # Update system libraries
 RUN apt-get update && apt-get upgrade -y
 
@@ -39,6 +46,8 @@ RUN apt-get install -y python-dev python-pip python3-dev python3-pip
 RUN python -m pip install -U pip
 RUN python3 -m pip install -U pip
 RUN python -m pip install tox
+RUN python -m pip install ansible
+RUN python -m pip install virtualenv
 
 # Clean everything
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && npm cache clear
