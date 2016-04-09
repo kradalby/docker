@@ -14,6 +14,8 @@ RUN apt-get install -y git
 RUN wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
 RUN dpkg -i erlang-solutions_1.0_all.deb
 
+# Update and install Erlang
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y erlang
 
 # Install rebar3
