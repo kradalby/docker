@@ -22,6 +22,9 @@ RUN apt-get dist-upgrade -y
 
 # Install wine
 RUN apt-get install wine -y
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install wine32 -y
 
 # Clean everything
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
