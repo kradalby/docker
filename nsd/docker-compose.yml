@@ -5,3 +5,4 @@ nsd:
     volumes:
         - ./test/etc/nsd:/etc/nsd:ro
         - ./test/log/nsd:/var/log/nsd
+    restart: always
