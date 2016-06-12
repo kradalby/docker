@@ -5,8 +5,12 @@ MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys DB82666C
 RUN gpg --export DB82666C | apt-key add -
 
+
+
 COPY deadsnakes.list /etc/apt/sources.list.d/
 
+RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+RUN echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list
 
 # Update system libraries
 RUN apt-get update && apt-get upgrade -y
@@ -33,7 +37,10 @@ RUN apt-get install -y \
     libxml2-dev \
     libxslt-dev \
     libyaml-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    apt-transport-https \
+    ca-certificates \
+    docker-engine
 
 # Other requirement
 RUN apt-get install -y curl socat postgresql-client
