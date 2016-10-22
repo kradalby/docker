@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:jessie
 
 MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 
@@ -15,9 +15,10 @@ RUN mkdir -p /opt/steamcmd &&\
     cd /opt/steamcmd &&\
     curl -s http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz
 
+WORKDIR /opt/steamcmd
+
 RUN /opt/steamcmd/steamcmd.sh +login anonymous +quit
 
-WORKDIR /opt/steamcmd
 
 # Clean everything
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
