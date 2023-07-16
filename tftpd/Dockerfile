@@ -1,5 +1,5 @@
 # Docker-tftpd
-FROM debian:bullseye
+FROM debian:bookworm
 
 MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 
