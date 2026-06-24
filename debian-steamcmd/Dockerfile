@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:trixie-20260623
 
 MAINTAINER Kristoffer Dalby <kradalby@kradalby.no>
 
